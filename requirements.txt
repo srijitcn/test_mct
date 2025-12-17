@@ -1,9 +1,9 @@
-mlflow>=3.6.0
 mosaicml==0.32.1
 mosaicml[mlflow]==0.32.1
 mosaicml[nlp,streaming]
 mosaicml-streaming==0.13.0
 triton>=3.4
+mlflow
 transformers
 datasets
 boto3

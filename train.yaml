@@ -2,7 +2,8 @@ name: test-torch-2-8-composer
 image: pytorch/pytorch:2.8.0-cuda12.8-cudnn9-runtime
 
 command: |
-  apt install git
+  apt update
+  apt install git -y
   mkdir /mnist
   mkdir /mnist/datasets
   mkdir /checkpoints
