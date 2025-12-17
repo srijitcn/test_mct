@@ -2,6 +2,7 @@ import os
 import torch
 import torch.distributed as dist
 import composer.models
+import torchvision.datasets as datasets
 
 def setup():
     dist.init_process_group("nccl")
@@ -9,6 +10,10 @@ def setup():
 
 def cleanup():
     dist.destroy_process_group()
+
+def get_dataset():
+    train_ds = datasets.MNIST('/mnist/datasets/train',download=True,train=True)
+    test_ds = datasets.MNIST('/mnist/datasets/test',download=True, train=False)
 
 # Your custom model
 class SimpleModel(composer.models.ComposerClassifier):
@@ -110,7 +115,7 @@ def train():
         save_interval="1ep", 
         save_overwrite=True,
         autoresume=True,
-        algorithms=[CutOut(num_holes=1, length=0.5), LabelSmoothing(0.1)],
+        algorithms=[CutOut(num_holes=1, length=0.5), LabelSmoothing(0.1)]
     )
 
     ####################################################
@@ -122,3 +127,7 @@ def train():
     
     finally:
         cleanup()
+
+if __name__ == '__main__':
+    get_dataset()
+    train()
