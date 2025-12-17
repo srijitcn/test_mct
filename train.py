@@ -126,8 +126,8 @@ def train():
 if __name__ == '__main__':
     print("===============================")
     print("Displaying versions")
-    print(torch.__version__)
-    print(composer.__version__)
+    print(f"Torch: {torch.__version__}")
+    print(f"Composer: {composer.__version__}")
 
     print("===============================")
     print("Starting training")
