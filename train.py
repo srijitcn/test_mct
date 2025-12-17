@@ -11,12 +11,6 @@ def setup():
 def cleanup():
     dist.destroy_process_group()
 
-def get_dataset():
-    train_ds = datasets.MNIST(root="/mnist/datasets",download=True,train=True)
-    test_ds = datasets.MNIST(root="/mnist/datasets",download=True, train=False)
-    print(f"Training data size: {len(train_ds)}")
-    print(f"Test data size: {len(test_ds)}")
-
 # Your custom model
 class SimpleModel(composer.models.ComposerClassifier):
     """Your custom model."""
@@ -62,8 +56,8 @@ def train():
     data_path = "/mnist"
     checkpoint_path = "/checkpoints"
 
-    train_ds = datasets.MNIST(f'{data_path}/datasets/', train=True, transform=transforms.ToTensor(), download=True)
-    val_ds = datasets.MNIST(f'{data_path}/datasets/', train=False, transform=transforms.ToTensor())
+    train_ds = datasets.MNIST(f'{data_path}/datasets/', train=True, transform=transforms.ToTensor(), download=False)
+    val_ds = datasets.MNIST(f'{data_path}/datasets/', train=False, transform=transforms.ToTensor(), download=False)
 
     print(f"Creating samplers")
 
@@ -131,8 +125,9 @@ def train():
 
 if __name__ == '__main__':
     print("===============================")
-    print("Downloading dataset")
-    get_dataset()
+    print("Displaying versions")
+    print(torch.__version__)
+    print(composer.__version__)
 
     print("===============================")
     print("Starting training")

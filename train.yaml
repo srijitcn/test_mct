@@ -10,6 +10,7 @@ command: |
   cd test_mct
   pip install -r requirements_1.txt 
   pip install -r requirements_2.txt 
+  python data.py
   composer train.py
 
 compute:
