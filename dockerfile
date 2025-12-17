@@ -9,6 +9,8 @@ RUN apt-get update \
 
 COPY requirements_1.txt /workdir/.
 COPY requirements_2.txt /workdir/.
-
+ 
+RUN pip install -r /workdir/requirements_1.txt
+RUN pip install -r /workdir/requirements_2.txt
 
 

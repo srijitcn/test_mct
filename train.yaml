@@ -3,7 +3,6 @@ image: mosaicml/pytorch:2.7.0_cu126-python3.12-ubuntu22.04
 
 command: |
   apt update
-  apt install git -y
   mkdir /mnist
   mkdir /mnist/datasets
   mkdir /checkpoints
