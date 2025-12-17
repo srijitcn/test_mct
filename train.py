@@ -109,8 +109,7 @@ def train():
         train_dataloader=train_dataloader,
         eval_dataloader=eval_dataloader,
         max_duration="1ep",
-        python_log_level="debug"
-        run_name=run_name,
+        python_log_level="debug",
         save_folder=checkpoint_path,
         save_interval="1ep", 
         save_overwrite=True,
