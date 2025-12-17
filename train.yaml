@@ -11,6 +11,7 @@ command: |
   mkdir /mnist
   mkdir /mnist/datasets
   mkdir /checkpoints
+  cd test_mct
   pip install -r requirements.txt 
   composer train.py
 
