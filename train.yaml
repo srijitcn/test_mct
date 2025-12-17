@@ -9,7 +9,8 @@ command: |
   mkdir /checkpoints
   git clone https://github.com/srijitcn/test_mct 
   cd test_mct
-  pip install -r requirements.txt 
+  pip install -r requirements_1.txt 
+  pip install -r requirements_2.txt 
   composer train.py
 
 compute:
