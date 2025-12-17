@@ -12,8 +12,10 @@ def cleanup():
     dist.destroy_process_group()
 
 def get_dataset():
-    train_ds = datasets.MNIST('/mnist/datasets/train',download=True,train=True)
-    test_ds = datasets.MNIST('/mnist/datasets/test',download=True, train=False)
+    train_ds = datasets.MNIST(root="/mnist/datasets",download=True,train=True)
+    test_ds = datasets.MNIST(root="/mnist/datasets",download=True, train=False)
+    print(f"Training data size: {len(train_ds)}")
+    print(f"Test data size: {len(test_ds)}")
 
 # Your custom model
 class SimpleModel(composer.models.ComposerClassifier):
@@ -128,5 +130,10 @@ def train():
         cleanup()
 
 if __name__ == '__main__':
+    print("===============================")
+    print("Downloading dataset")
     get_dataset()
+
+    print("===============================")
+    print("Starting training")
     train()
