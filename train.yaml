@@ -1,16 +1,12 @@
 name: test-torch-2-8-composer
 image: pytorch/pytorch:2.8.0-cuda12.8-cudnn9-runtime
 
-integrations:
-- integration_type: git_repo
-  git_repo: srijitcn/test_mct
-  git_branch: main # use your branch
-  ssh_clone: true # Should be true if using a private repo
-
 command: |
+  apt install git
   mkdir /mnist
   mkdir /mnist/datasets
   mkdir /checkpoints
+  git clone https://github.com/srijitcn/test_mct 
   cd test_mct
   pip install -r requirements.txt 
   composer train.py
